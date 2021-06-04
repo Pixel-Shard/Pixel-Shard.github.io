@@ -134,6 +134,13 @@ function start(){
 function generateCode() {
   codeGen = randomNumber(1000000, 9999999);
   code = codeGen.toString();
+  setKeyValue("keyCode", code, function () {
+    console.log("Set code: " + code);
+  });
+  getKeyValue("keyCode", function (keyC) {
+    code = keyC;
+    console.log("Got code : " + code);
+  });
   console.log(code);
   setText("adminCode", code);
   setText("mainCode", code);
@@ -148,7 +155,7 @@ function startTime(){
     time = 145;
     setText("adminTimer", time);
     setText("mainTime", time);
-    setText("secondTimer", time);
+    setText("secondTime", time);
   }
   timedLoop(1000, function() {
     time--;
